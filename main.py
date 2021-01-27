@@ -5,9 +5,14 @@ from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 import MetaTrader5 as mt5
  
+account=40513145
+authorized=mt5.login(account, password="c1ylysde")  
+
 # connect to MetaTrader 5
 if not mt5.initialize():
     mt5.initialize()
+
+  
  
 # request connection status and parameters
 print(mt5.terminal_info())
@@ -23,7 +28,7 @@ audusd_ticks = mt5.copy_ticks_range("AUDUSD", datetime(2021,1,27,13), datetime(2
 # get bars from different symbols in a number of ways
 eurusd_rates = mt5.copy_rates_from("EURUSD", mt5.TIMEFRAME_M1, datetime(2021,1,28,13), 1000)
 eurgbp_rates = mt5.copy_rates_from_pos("EURGBP", mt5.TIMEFRAME_M1, 0, 1000)
-eurcad_rates = mt5.copy_rates_range("EURCAD", mt5.TIMEFRAME_M1, datetime(2021,1,27,13), datetime(2020,1,28,13))
+eurcad_rates = mt5.copy_rates_range("EURCAD", mt5.TIMEFRAME_M1, datetime(2021,1,27,13), datetime(2021,1,28,13))
  
 # shut down connection to MetaTrader 5
 mt5.shutdown()
